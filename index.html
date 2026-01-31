@@ -14,6 +14,7 @@
 
   <meta name="twitter:title" content="Preserve and Personalize (ICLR 2026)">
   <meta name="twitter:description" content="Personalized text-to-image diffusion without distributional drift via Lipschitz regularization.">
+  <!-- Path to banner image (optimal 1200x600) -->
   <meta name="twitter:image" content="static/pnp_toy.png">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -38,13 +39,16 @@
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
 </head>
+
 <body>
 
 <style>
-  /* Keep only what you need; avoid overriding Bulma's .container/.item globally */
+  /* Keep layout stable; don't globally center all containers (it breaks Bulma layouts) */
+  .item { display: inline-block; margin: auto; }
+  .item video { width: 1024px; height: 1024px; max-width: 100%; }
   .small-text { font-size: 20px; }
 
-  /* Make all figures ~same width as Abstract column (visually) */
+  /* Make figures roughly the same width as the abstract column (4/5 of max-desktop) */
   .figure-wrap {
     max-width: 80%;
     margin: 0 auto;
@@ -55,12 +59,8 @@
     display: block;
   }
 
-  /* If you have videos later, keep this scoped (not global .item) */
-  .figure-wrap video {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+  /* Optional: tighten carousel items so they don't stretch */
+  .carousel .item .figure-wrap { max-width: 80%; }
 </style>
 
 <section class="hero">
@@ -70,7 +70,9 @@
         <div class="column has-text-centered">
 
           <h1 class="title is-1 publication-title">
-            Preserve and Personalize: Personalized Text-to-Image Diffusion Models without Distributional Drift
+            Preserve and Personalize: Personalized
+            <span class="nowrap">Text-to-Image</span>
+            Diffusion Models without Distributional Drift
           </h1>
 
           <div class="is-size-5 publication-authors">
@@ -93,6 +95,8 @@
 
           <div class="column has-text-centered">
             <div class="publication-links">
+
+              <!-- Paper link -->
               <span class="link-block">
                 <a href="https://openreview.net/forum?id=2ge1Y6DWPw" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
@@ -101,6 +105,7 @@
                 </a>
               </span>
 
+              <!-- Code link -->
               <span class="link-block">
                 <a href="CODE_URL" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
@@ -109,6 +114,7 @@
                 </a>
               </span>
 
+              <!-- Poster link -->
               <span class="link-block">
                 <a href="POSTER_URL" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
@@ -141,20 +147,19 @@
   </div>
 </section>
 
-<!-- Single image -->
+<!-- Conceptual Visualizations -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Conceptual Visualizations</h2>
+      <h2 class="title is-3 has-text-centered">Conceptual Visualizations</h2>
       <div class="figure-wrap">
         <img src="static/pnp_toy.png" alt="pnp toy figure">
       </div>
     </div>
   </div>
 </section>
-<!-- End single image -->
 
-<!-- Paper abstract -->
+<!-- Abstract -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -185,71 +190,90 @@
     </div>
   </div>
 </section>
-<!-- End paper abstract -->
 
-<!-- Image carousel -->
+<!-- Visual Comparisons (carousel) -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Visual Comparisons</h2>
+      <h2 class="title is-3 has-text-centered">Visual Comparisons</h2>
       <div class="carousel results-carousel">
+
         <div class="item">
           <div class="figure-wrap">
-            <img src="static/pnp_fig4.png" alt="pnp fig4">
+            <img src="static/pnp_fig4.png" alt="visual comparison 1">
           </div>
-          <h2 class="subtitle has-text-centered"></h2>
         </div>
+
         <div class="item">
           <div class="figure-wrap">
-            <img src="static/pnp_fig3.png" alt="pnp fig3">
+            <img src="static/pnp_fig3.png" alt="visual comparison 2">
           </div>
-          <h2 class="subtitle has-text-centered"></h2>
         </div>
+
       </div>
     </div>
   </div>
 </section>
-<!-- End image carousel -->
 
-<!-- Single image -->
+<!-- Ablation Studies (carousel) -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Lipschitz-based Regularization for Personalization</h2>
-      <div class="figure-wrap">
-        <img src="static/pnp_algo.png" alt="pnp algo">
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End single image -->
-
-<!-- Image carousel (no captions) -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Ablation Studies</h2>
+      <h2 class="title is-3 has-text-centered">Quantitative Results</h2>
       <div class="carousel results-carousel">
+
         <div class="item">
           <div class="figure-wrap">
-            <img src="static/pnp_fig2.png" alt="pnp fig2">
+            <img src="static/pnp_algo.png" alt="ablation 1">
           </div>
         </div>
+
         <div class="item">
           <div class="figure-wrap">
-            <img src="static/pnp_fig5.png" alt="pnp fig5">
+            <img src="static/pnp_table1.png" alt="ablation 2">
           </div>
         </div>
+
         <div class="item">
           <div class="figure-wrap">
-            <img src="static/pnp_fig6.png" alt="pnp fig6">
+            <img src="static/pnp_table2.png" alt="ablation 3">
           </div>
         </div>
+
       </div>
     </div>
   </div>
 </section>
-<!-- End image carousel -->
+
+<!-- Ablation Studies (carousel) -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Ablation Studies</h2>
+      <div class="carousel results-carousel">
+
+        <div class="item">
+          <div class="figure-wrap">
+            <img src="static/pnp_fig2.png" alt="ablation 1">
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="figure-wrap">
+            <img src="static/pnp_fig5.png" alt="ablation 2">
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="figure-wrap">
+            <img src="static/pnp_fig6.png" alt="ablation 3">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- BibTeX -->
 <section class="section" id="BibTeX">
@@ -265,7 +289,6 @@
     </code></pre>
   </div>
 </section>
-<!-- End BibTeX -->
 
 <footer class="footer">
   <div class="container">
