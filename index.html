@@ -290,11 +290,9 @@
   fetch('https://api.github.com/repos/rlgnswk/PnP_ProjectPage/tags')
     .then(response => response.json())
     .then(data => {
-      if (!data || data.length === 0) return;
-      var latestTag = data[0];
-      var el = document.getElementById('gitTagInfo');
-      if (el) el.innerHTML = `Latest Release: ${latestTag.name}`;
-    });
+          var latestTag = data[0];
+          document.getElementById('gitTagInfo').innerHTML = `Latest Release: ${latestTag.name}`;
+        });
 </script>
 
 </body>
