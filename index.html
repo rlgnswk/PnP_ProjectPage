@@ -2,23 +2,19 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners (your "business card") -->
   <meta name="description" content="ICLR 2026 project page for Preserve and Personalize: Personalized Text-to-Image Diffusion Models without Distributional Drift.">
   <meta property="og:title" content="Preserve and Personalize (ICLR 2026)"/>
   <meta property="og:description" content="Personalized text-to-image diffusion without distributional drift via a Lipschitz-regularized objective that guarantees preservation of the pretrained distribution."/>
   <meta property="og:url" content="https://rlgnswk.github.io/PnP_ProjectPage/"/>
-  <!-- Path to banner image (optimal 1200x630) -->
   <meta property="og:image" content="static/pnp_toy.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
 
   <meta name="twitter:title" content="Preserve and Personalize (ICLR 2026)">
   <meta name="twitter:description" content="Personalized text-to-image diffusion without distributional drift via Lipschitz regularization.">
-  <!-- Path to banner image (optimal 1200x600) -->
   <meta name="twitter:image" content="static/pnp_toy.png">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Keywords for indexing -->
   <meta name="keywords" content="text-to-image diffusion, personalization, distributional drift, preservation, Lipschitz regularization, ICLR 2026">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -44,7 +40,9 @@
 
 <style>
   /* Keep layout stable; don't globally center all containers (it breaks Bulma layouts) */
-  .item { display: inline-block; margin: auto; }
+
+  /* IMPORTANT: don't force inline-block for everything named .item
+     because Bulma-carousel uses .item too. We'll keep non-carousel items centered differently. */
   .item video { width: 1024px; height: 1024px; max-width: 100%; }
   .small-text { font-size: 20px; }
 
@@ -67,7 +65,7 @@
   }
   .nowrap{ white-space: nowrap; }
 
-  /* NEW: force any captions/subtitles in figure sections to be centered */
+  /* Captions centered */
   .figure-caption,
   .caption,
   .subtitle.has-text-centered{
@@ -75,15 +73,29 @@
     margin-left: auto;
     margin-right: auto;
   }
-  /* If captions are inside a justified parent (Bulma content), override it */
   .content.has-text-justified .figure-caption,
   .content.has-text-justified .caption,
   .content.has-text-justified .subtitle.has-text-centered{
     text-align: center !important;
   }
 
-  /* Optional: tighten carousel items so they don't stretch */
-  .carousel .item .figure-wrap { max-width: 80%; }
+  /* ✅ FIX: center carousel items even when images are smaller than the max width */
+  .results-carousel .item {
+    width: 100% !important;         /* each slide takes full carousel width */
+    display: flex !important;       /* allow centering */
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .results-carousel .item .figure-wrap {
+    margin: 0 auto !important;      /* ensure inner figure is centered */
+  }
+
+  /* For non-carousel single-image sections, keep image centered without using .item inline-block */
+  .single-figure {
+    display: flex;
+    justify-content: center;
+  }
 </style>
 
 <section class="hero">
@@ -118,7 +130,6 @@
           <div class="column has-text-centered">
             <div class="publication-links">
 
-              <!-- Paper link -->
               <span class="link-block">
                 <a href="https://openreview.net/forum?id=2ge1Y6DWPw" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
@@ -127,7 +138,6 @@
                 </a>
               </span>
 
-              <!-- Code link -->
               <span class="link-block">
                 <a href="CODE_URL" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
@@ -136,7 +146,6 @@
                 </a>
               </span>
 
-              <!-- Poster link -->
               <span class="link-block">
                 <a href="POSTER_URL" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
@@ -174,8 +183,10 @@
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3 has-text-centered">Conceptual Visualizations</h2>
-      <div class="figure-wrap">
-        <img src="static/pnp_toy.png" alt="pnp toy figure">
+      <div class="single-figure">
+        <div class="figure-wrap">
+          <img src="static/pnp_toy.png" alt="pnp toy figure">
+        </div>
       </div>
     </div>
   </div>
@@ -224,15 +235,12 @@
           <div class="figure-wrap">
             <img src="static/pnp_fig4.png" alt="visual comparison 1">
           </div>
-          <!-- If you later add captions, use this class -->
-          <!-- <p class="figure-caption">Caption text</p> -->
         </div>
 
         <div class="item">
           <div class="figure-wrap">
             <img src="static/pnp_fig3.png" alt="visual comparison 2">
           </div>
-          <!-- <p class="figure-caption">Caption text</p> -->
         </div>
 
       </div>
@@ -335,7 +343,6 @@
   </div>
 </footer>
 
-<!-- Optional: GitHub tag fetch (update repo URL) -->
 <script>
   fetch('https://api.github.com/repos/rlgnswk/PnP_ProjectPage/tags')
     .then(response => response.json())
