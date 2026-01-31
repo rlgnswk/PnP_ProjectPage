@@ -59,6 +59,29 @@
     display: block;
   }
 
+  /* Title line breaks + keep "Text-to-Image" together */
+  .publication-title{
+    text-align: center;
+    margin: 0 auto;
+    line-height: 1.15;
+  }
+  .nowrap{ white-space: nowrap; }
+
+  /* NEW: force any captions/subtitles in figure sections to be centered */
+  .figure-caption,
+  .caption,
+  .subtitle.has-text-centered{
+    text-align: center !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* If captions are inside a justified parent (Bulma content), override it */
+  .content.has-text-justified .figure-caption,
+  .content.has-text-justified .caption,
+  .content.has-text-justified .subtitle.has-text-centered{
+    text-align: center !important;
+  }
+
   /* Optional: tighten carousel items so they don't stretch */
   .carousel .item .figure-wrap { max-width: 80%; }
 </style>
@@ -70,9 +93,8 @@
         <div class="column has-text-centered">
 
           <h1 class="title is-1 publication-title">
-            Preserve and Personalize: Personalized
-            <span class="nowrap">Text-to-Image</span>
-            Diffusion Models without Distributional Drift
+            Preserve and Personalize:<br>
+            Personalized <span class="nowrap">Text-to-Image</span> Diffusion Models without Distributional Drift
           </h1>
 
           <div class="is-size-5 publication-authors">
@@ -202,12 +224,15 @@
           <div class="figure-wrap">
             <img src="static/pnp_fig4.png" alt="visual comparison 1">
           </div>
+          <!-- If you later add captions, use this class -->
+          <!-- <p class="figure-caption">Caption text</p> -->
         </div>
 
         <div class="item">
           <div class="figure-wrap">
             <img src="static/pnp_fig3.png" alt="visual comparison 2">
           </div>
+          <!-- <p class="figure-caption">Caption text</p> -->
         </div>
 
       </div>
@@ -215,7 +240,7 @@
   </div>
 </section>
 
-<!-- Ablation Studies (carousel) -->
+<!-- Quantitative Results (carousel) -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
@@ -224,19 +249,19 @@
 
         <div class="item">
           <div class="figure-wrap">
-            <img src="static/pnp_algo.png" alt="ablation 1">
+            <img src="static/pnp_algo.png" alt="quantitative 1">
           </div>
         </div>
 
         <div class="item">
           <div class="figure-wrap">
-            <img src="static/pnp_table1.png" alt="ablation 2">
+            <img src="static/pnp_table1.png" alt="quantitative 2">
           </div>
         </div>
 
         <div class="item">
           <div class="figure-wrap">
-            <img src="static/pnp_table2.png" alt="ablation 3">
+            <img src="static/pnp_table2.png" alt="quantitative 3">
           </div>
         </div>
 
